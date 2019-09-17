@@ -46,7 +46,7 @@ module BrakemanTranslateCheckstyleFormat
     end
 
     def self.create_message(warning)
-      "[#{warning['confidence']}][#{warning['warning_type']}] #{warning['message']}\n#{warning['link']}"
+      "#{warning['confidence']}/#{warning['warning_type'].gsub(/\s/, '-')}: #{warning['message']}\n#{warning['link']}"
     end
   end
 end
