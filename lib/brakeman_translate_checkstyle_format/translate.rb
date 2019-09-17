@@ -51,7 +51,7 @@ module BrakemanTranslateCheckstyleFormat
     end
     
     def self.define_source(warning)
-      "#{warning['confidence']}/#{warning['warning_type'].gsub(/\s/, '-')}"
+      "com.puppycrawl.tools.checkstyle.#{warning['confidence']}/#{warning['warning_type'].gsub(/\s/, '-')}"
     end
 
     def self.create_message(warning)
