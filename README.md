@@ -7,7 +7,7 @@ Change format of warning message from
 ### Old Style
 
 ```
-[Confidence][Warning type] Descrption'
+[Confidence][Warning type] Descrption
 ```
 
 to
