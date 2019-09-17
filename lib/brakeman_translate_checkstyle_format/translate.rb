@@ -25,8 +25,9 @@ module BrakemanTranslateCheckstyleFormat
                                      )
         file.add_element('error',
                          'line' => warning['line'],
-                         'severity' => 'error',
-                         'message' => BrakemanTranslateCheckstyleFormat::Translate.create_message(warning)
+                         'severity' => BrakemanTranslateCheckstyleFormat::Translate.define_severity(warning),
+                         'message' => BrakemanTranslateCheckstyleFormat::Translate.create_message(warning),
+                         'source' => BrakemanTranslateCheckstyleFormat::Translate.define_source(warning)
                         )
       end
 
@@ -43,6 +44,14 @@ module BrakemanTranslateCheckstyleFormat
                             )
 
       checkstyle
+    end
+    
+    def self.define_severity(warning)
+      warning['confidence'] == 'Weak' ? 'warning' : 'error'
+    end
+    
+    def self.define_source(warning)
+      "#{warning['confidence']}/#{warning['warning_type'].gsub(/\s/, '-')}"
     end
 
     def self.create_message(warning)
